@@ -1,4 +1,3 @@
-
 module mac_pe #(
     parameter DWIDTH = 8,
     parameter PWIDTH = 16
@@ -35,4 +34,5 @@ module mac_pe #(
         end
     end
 endmodule
+
 
