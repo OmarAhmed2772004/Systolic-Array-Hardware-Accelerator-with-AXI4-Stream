@@ -1,4 +1,3 @@
-
 module systolic_array #(
     parameter N = 2,
     parameter DWIDTH = 8,
@@ -52,3 +51,4 @@ module systolic_array #(
         end
     endgenerate
 endmodule
+
