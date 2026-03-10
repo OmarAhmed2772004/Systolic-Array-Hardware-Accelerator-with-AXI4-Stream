@@ -1,6 +1,4 @@
-// ---------------------------------------------------------
-// Module: systolic_array
-// ---------------------------------------------------------
+
 module systolic_array #(
     parameter N = 2,
     parameter DWIDTH = 8,
@@ -8,7 +6,7 @@ module systolic_array #(
 )(
     input  logic clk,
     input  logic rst_n,
-    input  logic en,             // <--- NEW: Pass enable to PEs
+    input  logic en,            
     input  logic load_weight,
     input  logic [DWIDTH-1:0] weight_in [N-1:0][N-1:0],
     input  logic [DWIDTH-1:0] act_in    [N-1:0],
@@ -36,7 +34,7 @@ module systolic_array #(
                 ) pe_inst (
                     .clk(clk),
                     .rst_n(rst_n),
-                    .en(en),              // <--- CONNECTED HERE
+                    .en(en),              
                     .load_weight(load_weight),
                     .weight_in(weight_in[i][j]),
                     .act_in(act_wires[i][j]),
