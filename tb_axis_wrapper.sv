@@ -1,6 +1,4 @@
-// ---------------------------------------------------------
-// Testbench: tb_axis_wrapper
-// ---------------------------------------------------------
+
 module tb_axis_wrapper;
 
     localparam N = 2;
@@ -54,11 +52,11 @@ module tb_axis_wrapper;
         wait_for_ready();
 
         // Inject Stall
-        $display("--> [STALL INJECTED] Pipeline freezing...");
+        $display(" [STALL INJECTED] Pipeline freezing");
         s_axis_tvalid = 0; 
         m_axis_tready = 0; 
         #20;               
-        $display("--> [STALL REMOVED] Pipeline resuming...\n");
+        $display(" [STALL REMOVED] Pipeline resuming\n");
         m_axis_tready = 1;
 
         // Push Zeros to flush
@@ -77,7 +75,7 @@ module tb_axis_wrapper;
         while (!s_axis_tready) @(posedge clk);
     endtask
 
-    // Scoreboard Checker
+    
     int valid_count = 0;
     always @(posedge clk) begin
         if (rst_n && m_axis_tvalid && m_axis_tready) begin
@@ -91,7 +89,7 @@ module tb_axis_wrapper;
             end else if (valid_count == 3) begin
                 if (out_row1 !== 6)  $error("FAIL Out 3 Row 1"); else $display("   [PASS] Out 3 Row 1 = 6");
             end else if (valid_count == 4) begin
-                $display("\n  ✅ ALL PROTOCOL & MATH TESTS PASSED! \n");
+                $display("\n ALL PROTOCOL & MATH TESTS PASSED \n");
                 $finish;
             end
         end
