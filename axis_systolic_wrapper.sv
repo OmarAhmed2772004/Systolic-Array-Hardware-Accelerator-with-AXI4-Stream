@@ -1,6 +1,4 @@
-// ---------------------------------------------------------
-// Module: axis_systolic_wrapper 
-// ---------------------------------------------------------
+
 module axis_systolic_wrapper #(
     parameter N = 2,
     parameter DWIDTH = 8,
@@ -36,11 +34,11 @@ module axis_systolic_wrapper #(
 
     assign s_axis_tready = m_axis_tready; 
 
-    // PIPELINE ADVANCE: Always move if downstream memory is ready
+    
     logic advance_pipeline;
     assign advance_pipeline = m_axis_tready;
 
-    // BUBBLE INJECTION: If data is invalid, feed zeros so the math flushes out
+   
     logic [(N*DWIDTH)-1:0] safe_tdata;
     assign safe_tdata = s_axis_tvalid ? s_axis_tdata : '0;
 
